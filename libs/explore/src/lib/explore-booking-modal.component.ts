@@ -172,6 +172,7 @@ export class ExploreBookingModalComponent implements OnInit {
             host: currentUser().email,
             organiser: currentUser(),
             date: this._data['date'] || new Date(),
+            
         });
     }
 
