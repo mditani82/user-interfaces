@@ -162,7 +162,8 @@ export class ExploreBookingModalComponent implements OnInit {
         private _event_form: EventFormService,
         private _dialog_ref: MatDialogRef<ExploreBookingModalComponent>,
         private _router: Router,
-    ) {}
+    ) {
+    }
 
     public ngOnInit() {
         this._event_form.newForm();
@@ -170,6 +171,7 @@ export class ExploreBookingModalComponent implements OnInit {
             resources: [this._data.space],
             host: currentUser().email,
             organiser: currentUser(),
+            date: this._data['date'] || new Date(),
         });
     }
 

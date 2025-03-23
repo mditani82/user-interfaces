@@ -188,7 +188,7 @@ export class ExploreSpacesService extends AsyncHandler implements OnDestroy {
                 ? ExploreBookQrComponent
                 : ExploreBookingModalComponent) as any,
             {
-                data: { space, alert: room_alerts[space.id] },
+                data: { space, alert: room_alerts[space.id], date: selected_date },
             },
         );
     }
