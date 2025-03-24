@@ -18,24 +18,42 @@ import { from, Observable } from 'rxjs';
             <!-- ADDED BY: Mohamad Itani -->
             <!-- DATE: 2025-03-20 -->
             <!-- Date Picker -->
-            <div class="mb-2 px-4 font-medium sm:mb-4 sm:text-lg">
-                <label for="date" class="mr-2"
-                    >{{ 'FORM.DATE' | translate }}:</label
-                >
-                <mat-form-field appearance="fill">
-                    <input
-                        matInput
-                        [matDatepicker]="picker"
-                        [(ngModel)]="selectedDate"
-                        (ngModelChange)="onDateChange($event)"
-                    />
-                    <mat-datepicker-toggle
-                        matSuffix
-                        [for]="picker"
-                    ></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+            <div class="flex flex-col sm:flex-row">
+                
+                <div class="px-4 font-medium  w-64">
+                    <label class="block font-medium">
+                        {{ 'FORM.DATE' | translate }}
+                    </label>
+                    <mat-form-field appearance="fill">
+                        <input
+                            matInput
+                            [matDatepicker]="picker"
+                            [(ngModel)]="selectedDate"
+                            (ngModelChange)="onDateChange($event)"
+                        />
+                        <mat-datepicker-toggle
+                            matSuffix
+                            [for]="picker"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="px-4 font-medium w-80">
+                    <label class="block font-medium">
+                        {{ 'FORM.TIME' | translate }}
+                    </label>
+                    <mat-form-field appearance="fill">
+                        <mat-select [(ngModel)]="selectedTime" (selectionChange)="onTimeChange($event.value)">
+                        <mat-option *ngFor="let time of timeOptions" [value]="time.value" [class.selected-now]="time.isNow">
+                            {{ time.display }}
+                            <span *ngIf="time.isNow" class="now-badge">Now</span>
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
+                                    
 
 
 
@@ -226,7 +244,7 @@ export class LandingAvailabilityComponent {
     public readonly loading_spaces = this._state.loading_spaces;
     public readonly levels_free = this._state.level_occupancy;
 
-    public book = (s) => this._explore.bookSpace(s, true, this.selectedDate.getTime());
+    public book = (s) => this._explore.bookSpace(s, true, this.combinedDateTime.getTime());
 
     public trackBySpaceId(index: number, space: Space) {
         return space.id;
@@ -254,7 +272,10 @@ export class LandingAvailabilityComponent {
         private _settings: SettingsService,
         private _explore: ExploreSpacesService,
         
-    ) {}
+    ) {
+        this.generateTimeOptions();
+        this.setInitialTime();
+    }
 
     // Method to get the list of spaces as an array
     public getSpaces(newDate: number): Observable<Space[]> {
@@ -264,7 +285,65 @@ export class LandingAvailabilityComponent {
     // ADDED BY: Mohamad Itani
     // DATE: 2025-03-20
     public onDateChange(newDate: Date) {
-        this.space_list = this.getSpaces(newDate.getTime());
+        this.updateDateTime()
+        this.space_list = this.getSpaces(this.combinedDateTime.getTime());
     }
+
+    generateTimeOptions() {
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+        
+        // Round current time to nearest 30 minutes
+        const roundedMinutes = currentMinute < 30 ? 0 : 30;
+        const currentRoundedTime = `${currentHour.toString().padStart(2, '0')}:${roundedMinutes.toString().padStart(2, '0')}`;
+
+        for (let hour = 0; hour < 24; hour++) {
+        for (let minute = 0; minute < 60; minute += 30) {
+            const timeValue = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+            const displayTime = new Date(0, 0, 0, hour, minute).toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+            });
+            
+            const isNow = timeValue === currentRoundedTime;
+            this.timeOptions.push({ value: timeValue, display: displayTime, isNow });
+        }
+        }
+    }
+
+    setInitialTime() {
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+        const roundedMinutes = currentMinute < 30 ? 0 : 30;
+        this.selectedTime = `${currentHour.toString().padStart(2, '0')}:${roundedMinutes.toString().padStart(2, '0')}`;
+      }
     
+      timeOptions: {value: string, display: string, isNow: boolean}[] = [];
+      selectedTime: string;
+      combinedDateTime: Date;
+    
+    
+    onTimeChange(time: string) {
+        // Handle time selection
+        console.log('Selected time:', time);
+        this.updateDateTime()
+        this.space_list = this.getSpaces(this.combinedDateTime.getTime());
+    }
+
+    updateDateTime() {
+        if (!this.selectedDate || !this.selectedTime) return;
+        
+        // Split the time string into hours and minutes
+        const [hours, minutes] = this.selectedTime.split(':').map(Number);
+        
+        // Create a new Date object combining both date and time
+        this.combinedDateTime = new Date(this.selectedDate);
+        this.combinedDateTime.setHours(hours, minutes, 0, 0);
+        
+        // Optional: Do something with the combined datetime
+        console.log('Updated DateTime:', this.combinedDateTime);
+      }
 }
