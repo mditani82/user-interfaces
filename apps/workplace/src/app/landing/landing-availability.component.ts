@@ -20,11 +20,11 @@ import { from, Observable } from 'rxjs';
             <!-- Date Picker -->
             <div class="flex flex-col sm:flex-row">
                 
-                <div class="px-4 font-medium  w-64">
+                <div class="px-4 font-medium w-64">
                     <label class="block font-medium">
                         {{ 'FORM.DATE' | translate }}
                     </label>
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" class="!bg-white">
                         <input
                             matInput
                             [matDatepicker]="picker"
@@ -160,11 +160,11 @@ import { from, Observable } from 'rxjs';
                         let space of space_list | async;
                         trackBy: trackBySpaceId
                     "
-                    class="flex w-full snap-start items-center space-x-4 rounded border border-base-200 bg-base-100 p-2 shadow"
+                    class="flex w-full snap-start items-center space-x-4 "
                     (click)="book(space)"
                 >
                     <div
-                        class="flex h-16 w-16 min-w-[4rem] items-center justify-center overflow-hidden rounded bg-base-200"
+                        class="flex h-32 w-32 min-w-[4rem] items-center justify-center overflow-hidden rounded"
                     >
                         <img
                             auth
@@ -173,17 +173,17 @@ import { from, Observable } from 'rxjs';
                                 else space_placeholder
                             "
                             [source]="(space.id | space | async)?.images[0]"
-                            class="h-full w-full object-cover object-center"
+                            class="h-full w-full object-cover object-center w-64"
                         />
                     </div>
                     <div class="text-left">
-                        <div class="max-w-full truncate px-1.5 font-medium">
+                        <div class="max-w-full truncate px-1.5 font-medium text-lg">
                             {{ space.display_name || space.name }}
                         </div>
 
                         <!-- MDI TASK: Adding Space Capacity -->
                         <div
-                            class="flex max-w-full items-center truncate text-sm opacity-60"
+                            class="flex max-w-full items-center truncate text-l opacity-60"
                         >
                             <app-icon class="text-blue-500 text-lg"
                                 >people</app-icon
@@ -194,7 +194,7 @@ import { from, Observable } from 'rxjs';
                         </div>
                        
                         <div
-                            class="flex max-w-full items-center truncate text-sm opacity-60"
+                            class="flex max-w-full items-center truncate text-l opacity-60"
                         >
                             <app-icon class="text-blue-500 text-lg"
                                 >place</app-icon
@@ -235,7 +235,7 @@ import { from, Observable } from 'rxjs';
 })
 export class LandingAvailabilityComponent {
 
-    // ADDED BY: Mohamad Itani
+    // MDI TASK: Mohamad Itani
     // DATE: 2025-03-20
     selectedDate: Date | null = new Date; // Initialize with null or a default date
 
@@ -282,7 +282,7 @@ export class LandingAvailabilityComponent {
         return from(this._state.getAvailable(newDate));
     }
 
-    // ADDED BY: Mohamad Itani
+    // MDI TASK: Mohamad Itani
     // DATE: 2025-03-20
     public onDateChange(newDate: Date) {
         this.updateDateTime()
@@ -328,8 +328,8 @@ export class LandingAvailabilityComponent {
       }
     
       timeOptions: {value: string, display: string, isNow: boolean}[] = [];
-      selectedTime: string;
-      combinedDateTime: Date;
+      selectedTime: string = '00:00';
+      combinedDateTime: Date = new Date;
     
     
     onTimeChange(time: string) {
@@ -349,8 +349,6 @@ export class LandingAvailabilityComponent {
         this.combinedDateTime = new Date(this.selectedDate);
         this.combinedDateTime.setHours(hours, minutes, 0, 0);
 
-        
-        
         // Optional: Do something with the combined datetime
         console.log('Updated DateTime:', this.combinedDateTime);
       }

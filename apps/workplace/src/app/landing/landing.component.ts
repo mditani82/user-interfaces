@@ -7,7 +7,7 @@ import { startOfMinute } from 'date-fns';
     selector: 'app-landing',
     template: `
         <topbar class="z-10" *ngIf="!hide_nav"></topbar>
-        <div class="flex h-1/2 flex-1 bg-base-200">
+        <div class="flex h-1/2 flex-1 bg-white">
             <!-- MDI Task: Remove side nav due to client Request  -->
             <!-- <div
                 class="relative hidden h-full w-[18rem] flex-col overflow-hidden border-r border-base-300 bg-base-100 sm:flex"
@@ -54,8 +54,9 @@ import { startOfMinute } from 'date-fns';
                 </div>
             </div> -->
             <div class="z-0 h-full w-1/2 flex-1 overflow-auto sm:px-4">
+                <!-- MDI TASK: Change Color as per client request -->
                 <header
-                    class="sticky top-0 z-50 mb-4 flex items-center justify-between overflow-hidden bg-ternary px-4 sm:rounded-b"
+                    class="sticky top-0 z-50 mb-4 flex items-center justify-between overflow-hidden pt-3 pb-3 px-4 sm:rounded-b bg-black text-white"
                 >
                     <div class="">
                         <div class="font-medium sm:text-xl">

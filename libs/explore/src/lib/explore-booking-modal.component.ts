@@ -106,8 +106,10 @@ export interface ExploreBookingModalData {
                 </div>
             </main>
             <footer class="flex justify-center border-t border-base-200 p-2">
-                <button btn matRipple class="w-32" (click)="save()">
-                    {{ 'COMMON.SAVE' | translate }}
+                <!-- MDI TASK: Change button name and color as per client request -->
+                <!-- Original COMMON.SAVE + remove bg-black -->
+                <button btn matRipple class="w-32 bg-black" (click)="save()">
+                    {{ 'COMMON.BOOK' | translate }}
                 </button>
             </footer>
         </ng-container>
