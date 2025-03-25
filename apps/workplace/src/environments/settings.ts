@@ -148,10 +148,10 @@ const app = {
     title: 'Workplace Application',
     description: 'PlaceOS Workplace UI written with Angular Framework',
     short_name: 'STAFF',
-    // logo_light: 'assets/logo-light.svg',
-    // logo_dark: 'assets/logo-dark.svg',
-    logo_light: 'assets/img/company_logo.svg',
-    logo_dark: 'assets/img/company_logo.svg',
+    logo_light: 'assets/logo-light.svg',
+    logo_dark: 'assets/logo-dark.svg',
+    // logo_light: 'assets/img/company_logo.svg',
+    // logo_dark: 'assets/img/company_logo.svg',
     locales: [
         { id: 'en-AU', name: 'LANGUAGE.ENGLISH', local: 'English', flag: '🇦🇺' },
         {
