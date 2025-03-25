@@ -286,6 +286,12 @@ export class LandingAvailabilityComponent {
     // DATE: 2025-03-20
     public onDateChange(newDate: Date) {
         this.updateDateTime()
+
+        console.log('Selected date:', newDate);
+        console.log('Selected Date:', newDate.getTime());
+        console.log('Selected Date:', this.combinedDateTime);
+        console.log('Selected Date:', this.combinedDateTime.getTime());
+        
         this.space_list = this.getSpaces(this.combinedDateTime.getTime());
     }
 
@@ -342,6 +348,8 @@ export class LandingAvailabilityComponent {
         // Create a new Date object combining both date and time
         this.combinedDateTime = new Date(this.selectedDate);
         this.combinedDateTime.setHours(hours, minutes, 0, 0);
+
+        
         
         // Optional: Do something with the combined datetime
         console.log('Updated DateTime:', this.combinedDateTime);

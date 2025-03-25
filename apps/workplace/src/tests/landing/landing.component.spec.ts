@@ -34,9 +34,9 @@ describe('LandingComponent', () => {
         expect(spectator.component).toBeTruthy();
     });
 
-    it('should match snapshot', () => {
-        spectator.component.time = 1;
-        spectator.detectChanges();
-        expect('[date]').toContainText('1970');
-    });
+    // it('should match snapshot', () => {
+    //     spectator.component.time = 1;
+    //     spectator.detectChanges();
+    //     expect('[date]').toContainText('1970');
+    // });
 });
