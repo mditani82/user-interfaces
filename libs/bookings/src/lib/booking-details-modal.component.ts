@@ -324,7 +324,8 @@ import { DeskSettingsModalComponent } from './desk-settings-modal.component';
             >
                 <div class="flex items-center space-x-2 text-base">
                     <app-icon class="text-error">delete</app-icon>
-                    <div>{{ 'BOOKINGS.ACTION_DELETE' | translate }}</div>
+                    <!-- <div>{{ 'BOOKINGS.ACTION_DELETE' | translate }}</div> -->
+                    <div>Cancel booking</div>
                 </div>
             </button>
             <button

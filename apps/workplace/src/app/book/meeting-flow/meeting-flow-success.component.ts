@@ -39,7 +39,8 @@ import { set } from 'date-fns';
                             | translate: { name: 'RESOURCE.ROOM' | translate }
                     }}
                 </h2>
-                <img src="assets/icons/success.svg" />
+                <!-- MDI TASK: Remove upon client request -->
+                <!-- <img src="assets/icons/success.svg" /> -->
                 <p class="max-w-[32rem] text-center">
                     <ng-container *ngIf="last_event?.all_day">
                         {{
@@ -58,11 +59,13 @@ import { set } from 'date-fns';
                         }}
                     </ng-container>
                 </p>
-                <p *ngIf="true">
+                <!-- MDI TASK: Remove upon client request -->
+                <!-- <p *ngIf="true">
                     {{ 'CALENDAR_EVENT.SUCCESS_WAIT_APPROVED' | translate }}
-                </p>
+                </p> -->
                 <div class="h-4"></div>
-                <button
+                <!-- MDI TASK: Remove upon client request -->
+                <!-- <button
                     btn
                     matRipple
                     class="w-48"
@@ -70,16 +73,17 @@ import { set } from 'date-fns';
                     (click)="startDeskBooking()"
                 >
                     {{ 'CALENDAR_EVENT.BOOK_NEARBY_DESK' | translate }}
-                </button>
+                </button> -->
             </main>
             <footer
                 class="sticky bottom-0 mt-4 flex w-full items-center justify-center border-t border-base-200 bg-base-100 p-2"
             >
+                <!-- MDI TASK: Color changed to black based on client request -->
                 <a
                     btn
                     name="meeting-created-continue"
                     matRipple
-                    class="w-full max-w-[32rem]"
+                    class="w-full max-w-[32rem] bg-black"
                     [routerLink]="['/']"
                 >
                     {{ 'APP.WORKPLACE.MEETING_FINISHED' | translate }}

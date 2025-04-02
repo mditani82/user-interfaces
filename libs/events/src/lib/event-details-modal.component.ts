@@ -583,9 +583,11 @@ const EMPTY_ACTIONS = [];
                 >
                     <div class="flex items-center space-x-2 pr-2 text-base">
                         <app-icon class="text-2xl">edit</app-icon>
-                        <div>
+                        <!-- MDI TASK: Changed as per client request -->
+                        <!-- <div>
                             {{ 'CALENDAR_EVENT.ACTION_EDIT' | translate }}
-                        </div>
+                        </div> -->
+                        <div>Edit booking</div>
                     </div>
                 </button>
                 <button
@@ -594,9 +596,11 @@ const EMPTY_ACTIONS = [];
                 >
                     <div class="flex items-center space-x-2 pr-2 text-base">
                         <app-icon class="text-2xl text-error">delete</app-icon>
-                        <div>
+                        <!-- MDI TASK: Changed as per client request -->
+                        <!-- <div>
                             {{ 'CALENDAR_EVENT.ACTION_DELETE' | translate }}
-                        </div>
+                        </div> -->
+                        <div>Cancel booking</div>
                     </div>
                 </button>
                 <button

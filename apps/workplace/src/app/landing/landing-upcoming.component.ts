@@ -167,9 +167,10 @@ export class LandingUpcomingComponent
             item instanceof CalendarEvent
                 ? item.space?.display_name
                 : item.asset_name || item.asset_id;
+        // MDI TASK: Changed based on client request    
         const resp = await openConfirmModal(
             {
-                title: i18n('APP.WORKPLACE.SCHEDULE_REMOVE_TITLE'),
+                title: "Cancel booking",
                 content: i18n('APP.WORKPLACE.SCHEDULE_REMOVE_MSG', {
                     name: resource_name,
                     time,
@@ -179,8 +180,23 @@ export class LandingUpcomingComponent
             this._dialog,
         );
 
+        // const resp = await openConfirmModal(
+        //     {
+        //         title: i18n('APP.WORKPLACE.SCHEDULE_REMOVE_TITLE'),
+        //         content: i18n('APP.WORKPLACE.SCHEDULE_REMOVE_MSG', {
+        //             name: resource_name,
+        //             time,
+        //         }),
+        //         icon: { content: 'delete' },
+        //     },
+        //     this._dialog,
+        // );
+
+
         if (resp.reason !== 'done') return;
-        resp.loading(i18n('APP.WORKPLACE.SCHEDULE_REMOVE_LOADING'));
+        // MDI TASK: Changed based on client request  
+        resp.loading("Canceling booking...");
+        // resp.loading(i18n('APP.WORKPLACE.SCHEDULE_REMOVE_LOADING'));
         await (item instanceof CalendarEvent ? removeEvent : removeBooking)(
             item.id,
             {
@@ -202,7 +218,8 @@ export class LandingUpcomingComponent
                 resp.close();
                 throw e;
             });
-        notifySuccess(i18n('APP.WORKPLACE.SCHEDULE_REMOVE_SUCCESS'));
+        notifySuccess("Successfully canceled booking.");
+        // notifySuccess(i18n('APP.WORKPLACE.SCHEDULE_REMOVE_SUCCESS'));
         this._state.refreshUpcomingEvents();
         this._dialog.closeAll();
     }

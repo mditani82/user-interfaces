@@ -81,14 +81,14 @@ import {
                     {{ 'BOOKINGS.SUCCESS_WAIT_APPROVED' | translate }}
                 </p>
                 <div
-                    class="relative flex flex-col items-center space-y-4 p-4"
+                    class="relative flex flex-col items-center space-y-4 p-4  bg-black"
                     *ngIf="show_links"
                 >
                     <a
                         btn
                         matRipple
                         name="desk-outlook-link"
-                        class="inverse flex w-64 items-center space-x-2 rounded p-2 pr-4"
+                        class="inverse flex w-64 items-center space-x-2 rounded p-2 pr-4  bg-black"
                         [href]="outlook_link | sanitize: 'url'"
                         target="_blank"
                         rel="noopener noreferer"
@@ -100,7 +100,7 @@ import {
                         btn
                         matRipple
                         name="desk-google-link"
-                        class="inverse flex w-64 items-center space-x-2 rounded p-2 pr-4"
+                        class="inverse flex w-64 items-center space-x-2 rounded p-2 pr-4  bg-black"
                         [href]="google_link | sanitize: 'url'"
                         target="_blank"
                         rel="noopener noreferer"
@@ -112,7 +112,7 @@ import {
                         btn
                         matRipple
                         name="desk-ical-link"
-                        class="inverse flex w-64 items-center space-x-2 rounded p-2 pr-4"
+                        class="inverse flex w-64 items-center space-x-2 rounded p-2 pr-4  bg-black"
                         [href]="ical_link | safe: 'url'"
                         target="_blank"
                         rel="noopener noreferer"
@@ -123,13 +123,13 @@ import {
                 </div>
             </main>
             <footer
-                class="sticky bottom-0 mt-4 flex w-full items-center justify-center border-t border-base-200 bg-base-100 p-2"
+                class="sticky bottom-0 mt-4 flex w-full items-center justify-center border-t border-base-200 p-2 bg-black"
             >
                 <a
                     btn
                     name="desk-confirm-continue"
                     matRipple
-                    class="mx-auto w-full max-w-[32rem]"
+                    class="mx-auto w-full max-w-[32rem]  bg-black"
                     [routerLink]="['/']"
                 >
                     {{ 'APP.WORKPLACE.BOOKING_FINISHED' | translate }}
