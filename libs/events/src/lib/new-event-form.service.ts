@@ -70,11 +70,11 @@ const BOOKING_URLS = [
 enum Tags {
     // MDI TASK: chnaged based on customer request
     // Availability = 'CHECKING_AVAILABILITY',
-    Availability = 'CHECKING_AVAILABILITY',
+    Availability = 'CHECKING AVAILABILITY',
     BookingRules = 'BOOKING_RULES',
     ListingRooms = 'LIST_ROOMS',
     // PostBooking = 'MAKE_BOOKING',
-    PostBooking = 'BOOKING_IN_PROGRESS',
+    PostBooking = 'BOOKING IN PROGRESS',
 }
 
 type EventFlowView = 'form' | 'find' | 'catering' | 'confirm' | 'success';
