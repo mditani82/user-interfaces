@@ -165,21 +165,22 @@ import { SettingsService } from '@placeos/common';
             *ngIf="features.length > 3; else simple_state"
             [attr.dark]="dark_mode"
         >
+        <!-- MDI Task: Change Home Button Color as per clinet request. -->
             <a
                 matRipple
-                class="relative flex flex-1 flex-col items-center justify-center"
+                class="relative flex flex-1 flex-col items-center justify-center  !text-black"
                 [routerLink]="[default_page]"
                 name="footer-nav-home"
                 routerLinkActive="text-secondary active"
             >
-                <app-icon filled class="text-2xl">home</app-icon>
+                <app-icon filled class="text-2xl  !text-black">home</app-icon>
                 <app-icon
                     outline
                     className="material-icons-outlined"
-                    class="!m-0 text-2xl"
+                    class="!m-0 text-2xl  !text-black"
                     >home</app-icon
                 >
-                <span class="text-sm">{{
+                <span class="text-sm text-black">{{
                     'APP.WORKPLACE.MENU_HOME' | translate
                 }}</span>
             </a>
