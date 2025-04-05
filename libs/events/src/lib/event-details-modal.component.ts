@@ -85,7 +85,7 @@ const EMPTY_ACTIONS = [];
                         <button
                             btn
                             matRipple
-                            class="h-10 flex-1"
+                            class="h-10 flex-1 bg-black"
                             *ngIf="
                                 room_status &&
                                 event?.can_check_in &&
