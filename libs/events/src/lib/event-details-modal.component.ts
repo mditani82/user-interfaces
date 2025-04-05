@@ -82,6 +82,7 @@ const EMPTY_ACTIONS = [];
                         class="flex items-center space-x-2 px-2 print:hidden"
                         *ngIf="event.state !== 'done'"
                     >
+                        <!-- MDI Task: Change background button color -->
                         <button
                             btn
                             matRipple
@@ -116,11 +117,12 @@ const EMPTY_ACTIONS = [];
                                 </div>
                             </div>
                         </button>
+                        <!-- MDI Task: Change background button color -->
                         <button
                             icon
                             matRipple
                             [matMenuTriggerFor]="menu"
-                            class="h-12 w-12 rounded bg-secondary text-white"
+                            class="h-12 w-12 rounded bg-black text-white"
                             *ngIf="allow_edit"
                         >
                             <app-icon>more_horiz</app-icon>

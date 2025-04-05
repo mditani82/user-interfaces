@@ -301,11 +301,11 @@ export class LandingAvailabilityComponent {
         const currentMinute = now.getMinutes();
         
         // Round current time to nearest 30 minutes
-        const roundedMinutes = currentMinute < 30 ? 0 : 30;
+        const roundedMinutes = currentMinute < 15 ? 0 : 15;
         const currentRoundedTime = `${currentHour.toString().padStart(2, '0')}:${roundedMinutes.toString().padStart(2, '0')}`;
 
         for (let hour = 0; hour < 24; hour++) {
-        for (let minute = 0; minute < 60; minute += 30) {
+        for (let minute = 0; minute < 60; minute += 15) {
             const timeValue = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
             const displayTime = new Date(0, 0, 0, hour, minute).toLocaleTimeString([], {
             hour: '2-digit',
@@ -323,7 +323,7 @@ export class LandingAvailabilityComponent {
         const now = new Date();
         const currentHour = now.getHours();
         const currentMinute = now.getMinutes();
-        const roundedMinutes = currentMinute < 30 ? 0 : 30;
+        const roundedMinutes = currentMinute < 15 ? 0 : 15;
         this.selectedTime = `${currentHour.toString().padStart(2, '0')}:${roundedMinutes.toString().padStart(2, '0')}`;
       }
     
