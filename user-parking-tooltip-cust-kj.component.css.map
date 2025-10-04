@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;24abcfd68fa282b99da955d727d50abf0ade9f431b717287df100a172be1211a;/home/runner/work/user-interfaces/user-interfaces/libs/components/src/lib/user-parking-tooltip-cust-kj.component.ts"],
+  "sourcesContent": ["\n            .no-subscript ::ng-deep .mat-mdc-form-field-subscript-wrapper {\n                display: none;\n            }\n            .date-picker-field input {\n                cursor: pointer;\n            }\n        "],
+  "mappings": ";AACY,CAAC,aAAa,UAAU,CAAC;AACrB,WAAS;AACb;AACA,CAAC,kBAAkB;AACf,UAAQ;AACZ;",
+  "names": []
+}
