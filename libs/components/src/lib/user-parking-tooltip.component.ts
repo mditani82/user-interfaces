@@ -10,6 +10,7 @@ import {
 } from '@placeos/common';
 import { CustomTooltipData } from './custom-tooltip.component';
 import { TranslatePipe } from './translate.pipe';
+import { ParkingToolTipMenu } from "./user-parking-tooltip-cust-kj.component";
 
 @Component({
     selector: 'user-parking-tooltip',
@@ -20,27 +21,18 @@ import { TranslatePipe } from './translate.pipe';
             <h3 class="border-b border-base-300 text-lg font-medium">
                 {{ 'COMMON.CONTROLS_PARKING' | translate }}
             </h3>
-            <div class="flex flex-col">
-                <label for="plate-number">{{
-                    'EXPLORE.PARKING_PLATE_NUMBER' | translate
-                }}</label>
-                <mat-form-field appearance="outline" class="no-subscript">
-                    <input
-                        matInput
-                        [(ngModel)]="plate_number"
-                        [placeholder]="
-                            'EXPLORE.PARKING_PLATE_NUMBER' | translate
-                        "
-                    />
-                </mat-form-field>
-            </div>
-            <button btn matRipple class="w-full" (click)="save()">
+            <app-user-parking-tooltip-cust-kj 
+                [plateDetailsString]="plate_number()"
+                (plateDetailsChange)="handlePlateDetails($event)" 
+                (isValidChange)="handleValidationStatus($event)"
+            />
+            <button btn matRipple class="w-full" (click)="save()" [disabled]="!isLicensePlateFormValid">
                 {{ 'COMMON.SAVE' | translate }}
             </button>
         </div>
     `,
     styles: [``],
-    imports: [MatFormFieldModule, MatInputModule, TranslatePipe, FormsModule],
+    imports: [MatFormFieldModule, MatInputModule, TranslatePipe, FormsModule, ParkingToolTipMenu],
 })
 export class UserParkingTooltipComponent implements OnInit {
     private _settings = inject(SettingsService);
@@ -60,4 +52,19 @@ export class UserParkingTooltipComponent implements OnInit {
         notifySuccess(i18n('COMMON.PARKING_SETTINGS_SAVE'));
         this._tooltip?.close();
     }
+
+    // ------------------------KJ Tech Nestle Code Base----------------------
+
+    isLicensePlateFormValid: boolean = false;
+
+    handlePlateDetails(plateString: string): void {
+        console.log('Plate details:', plateString);
+        this.plate_number.set(plateString || '');
+    }
+
+    handleValidationStatus(isValid: boolean): void {
+        this.isLicensePlateFormValid = isValid;
+        console.log('Form is valid:', isValid);
+    }
+
 }
